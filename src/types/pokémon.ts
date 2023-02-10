@@ -1,4 +1,4 @@
-export interface IPokemon {
+export interface IPokémon {
   abilities: Ability2[];
   base_experience: number;
   forms: Ability[];
@@ -44,14 +44,14 @@ interface Sprites {
 }
 
 interface Versions {
-  'generation-i': Generationi;
-  'generation-ii': Generationii;
-  'generation-iii': Generationiii;
-  'generation-iv': Generationiv;
-  'generation-v': Generationv;
-  'generation-vi': Generationvi;
-  'generation-vii': Generationvii;
-  'generation-viii': Generationviii;
+  "generation-i": Generationi;
+  "generation-ii": Generationii;
+  "generation-iii": Generationiii;
+  "generation-iv": Generationiv;
+  "generation-v": Generationv;
+  "generation-vi": Generationvi;
+  "generation-vii": Generationvii;
+  "generation-viii": Generationviii;
 }
 
 interface Generationviii {
@@ -60,16 +60,16 @@ interface Generationviii {
 
 interface Generationvii {
   icons: Dreamworld;
-  'ultra-sun-ultra-moon': Home;
+  "ultra-sun-ultra-moon": Home;
 }
 
 interface Generationvi {
-  'omegaruby-alphasapphire': Home;
-  'x-y': Home;
+  "omegaruby-alphasapphire": Home;
+  "x-y": Home;
 }
 
 interface Generationv {
-  'black-white': Blackwhite;
+  "black-white": Blackwhite;
 }
 
 interface Blackwhite {
@@ -85,8 +85,8 @@ interface Blackwhite {
 }
 
 interface Generationiv {
-  'diamond-pearl': Diamondpearl;
-  'heartgold-soulsilver': Diamondpearl;
+  "diamond-pearl": Diamondpearl;
+  "heartgold-soulsilver": Diamondpearl;
   platinum: Diamondpearl;
 }
 
@@ -103,8 +103,8 @@ interface Diamondpearl {
 
 interface Generationiii {
   emerald: Emerald;
-  'firered-leafgreen': Fireredleafgreen;
-  'ruby-sapphire': Fireredleafgreen;
+  "firered-leafgreen": Fireredleafgreen;
+  "ruby-sapphire": Fireredleafgreen;
 }
 
 interface Fireredleafgreen {
@@ -145,7 +145,7 @@ interface Crystal {
 }
 
 interface Generationi {
-  'red-blue': Redblue;
+  "red-blue": Redblue;
   yellow: Redblue;
 }
 
@@ -161,7 +161,7 @@ interface Redblue {
 interface Other {
   dream_world: Dreamworld;
   home: Home;
-  'official-artwork': Officialartwork;
+  "official-artwork": Officialartwork;
 }
 
 interface Officialartwork {

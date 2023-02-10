@@ -9,19 +9,13 @@ import {
 } from "@mantine/core";
 import InfiniteScroll from "react-infinite-scroller";
 import { useInfiniteQuery, useQuery } from "react-query";
-import PokemonCard from "../components/PokemonCard";
-import pokemonApi from "../lib/pokemonApi";
-import { IPokemon } from "../types/pokemon";
+import PokémonCard from "../components/PokémonCard";
+import { useInfinitePokémons } from "../lib/pokémonApi";
+import { IPokémon } from "../types/pokémon";
 
 function Home() {
-  const { data, fetchNextPage, hasNextPage, isLoading, isError, error } =
-    useInfiniteQuery(
-      "pokemons",
-      ({ pageParam }) => pokemonApi.getPokemons(pageParam),
-      {
-        getNextPageParam: (lastPage) => lastPage.next || undefined,
-      }
-    );
+  const { pokémons, fetchNextPage, hasNextPage, isLoading, isError, error } =
+    useInfinitePokémons();
 
   if (isLoading)
     return Array(16)
@@ -50,10 +44,8 @@ function Home() {
           spacing="lg"
           my="xl"
         >
-          {data.pages.map((p) => {
-            return p.results.map((poke: IPokemon) => {
-              return <PokemonCard key={poke.id} pokemon={poke} />;
-            });
+          {pokémons.map((poke) => {
+            return <PokémonCard key={poke.id} name={poke.name} />;
           })}
         </SimpleGrid>
       </InfiniteScroll>

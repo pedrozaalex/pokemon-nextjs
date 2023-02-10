@@ -6,24 +6,17 @@ import {
   Text,
   useMantineTheme,
 } from "@mantine/core";
-import { useQuery } from "react-query";
-import pokemonApi from "../lib/pokemonApi";
-import { IPokemon } from "../types/pokemon";
-import PokemonDetailsModal from "./PokemonDetailsModal";
+import { usePokémon } from "../lib/pokémonApi";
+import PokémonDetailsModal from "./PokémonDetailsModal";
 
 type Props = {
-  pokemon: any;
+  name: string;
 };
-function PokemonCard({ pokemon }: Props) {
+
+function PokémonCard({ name }: Props) {
   const theme = useMantineTheme();
 
-  const secondaryColor =
-    theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[7];
-
-  const { data, isLoading } = useQuery<IPokemon>(
-    ["pokemon", pokemon.name],
-    () => pokemonApi.getPokemon(pokemon.name)
-  );
+  const { pokémon, isLoading } = usePokémon({ name });
 
   return (
     <div>
@@ -43,10 +36,10 @@ function PokemonCard({ pokemon }: Props) {
           <>
             <Card.Section>
               <Image
-                src={data.sprites.other.home.front_default}
+                src={pokémon.sprites.other.home.front_default}
                 height={200}
                 fit="contain"
-                alt={data.name}
+                alt={pokémon.name}
               />
             </Card.Section>
 
@@ -58,11 +51,11 @@ function PokemonCard({ pokemon }: Props) {
               }}
             >
               <Text weight={500} transform="capitalize">
-                {data.name}
+                {pokémon.name}
               </Text>
             </Group>
 
-            <PokemonDetailsModal pokemon={data} />
+            <PokémonDetailsModal pokémon={pokémon} />
           </>
         )}
       </Card>
@@ -70,4 +63,4 @@ function PokemonCard({ pokemon }: Props) {
   );
 }
 
-export default PokemonCard;
+export default PokémonCard;

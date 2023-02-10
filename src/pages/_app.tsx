@@ -6,12 +6,19 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import { useState } from "react";
-import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
+import {
+  DehydratedState,
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useColorScheme } from "@mantine/hooks";
 import Layout from "../components/Layout";
 
-export default function App(props: AppProps) {
+export default function App(
+  props: AppProps<{ dehydratedState: DehydratedState }>
+) {
   const { Component, pageProps } = props;
   const preferredColorScheme = useColorScheme();
   const [colorScheme, setColorScheme] =
@@ -25,6 +32,17 @@ export default function App(props: AppProps) {
         defaultOptions: { queries: { refetchOnWindowFocus: false } },
       })
   );
+
+  const theme = {
+    colorScheme,
+    Container: {
+      xs: 540,
+      sm: 720,
+      md: 960,
+      lg: 1140,
+      xl: 1320,
+    },
+  };
 
   return (
     <>
@@ -42,20 +60,7 @@ export default function App(props: AppProps) {
             colorScheme={colorScheme}
             toggleColorScheme={toggleColorScheme}
           >
-            <MantineProvider
-              withGlobalStyles
-              withNormalizeCSS
-              theme={{ colorScheme }}
-              defaultProps={{
-                Container: {
-                  xs: 540,
-                  sm: 720,
-                  md: 960,
-                  lg: 1140,
-                  xl: 1320,
-                },
-              }}
-            >
+            <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
               <Layout>
                 <Component {...pageProps} />
               </Layout>
