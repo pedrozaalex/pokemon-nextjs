@@ -43,7 +43,7 @@ function PokemonCard({ pokemon }: Props) {
           <>
             <Card.Section>
               <Image
-                src={data.sprites.other.dream_world.front_default}
+                src={data.sprites.other.home.front_default}
                 height={200}
                 fit="contain"
                 alt={data.name}
