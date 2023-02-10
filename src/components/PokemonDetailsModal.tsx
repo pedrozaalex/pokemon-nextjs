@@ -26,7 +26,7 @@ function PokemonDetailsModal({ pokemon }: Props) {
       >
         <Box>
           <Image
-            src={pokemon.sprites.other.dream_world.front_default}
+            src={pokemon.sprites.other.home.front_default}
             height={200}
             fit="contain"
             alt={pokemon.name}
